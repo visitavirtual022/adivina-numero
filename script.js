@@ -7,22 +7,17 @@ const highscoreField = document.querySelector('.highscore')
 const messageField = document.querySelector('.message')
 const numberField = document.querySelector('.number')
 
-console.log(
-  scoreField,
-  checkButton,
-  againButton,
-  guessField,
-  highscoreField,
-  messageField,
-  numberField
-)
+// 2do paso: crear las variables que necesitamos
 
-scoreField.textContent = 10
+const score = 20
+const highscore = 0
 
-checkButton.addEventListener('click', function () {
-  alert('hola  mundo')
-})
+// obtener un número aleatorio entre 1 y 20
+const MIN_NUMBER = 1
+const MAX_NUMBER = 20
+const secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER
 
-function alerta() {
-  alert('Me hiciste click!')
-}
+const number = guessField.value
+
+console.log(`El número secreto es ${secretNumber}`)
+console.log(`El número ingresado es ${number}`)
