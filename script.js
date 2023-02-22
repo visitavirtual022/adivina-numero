@@ -10,15 +10,15 @@ const bodyField = document.querySelector('body')
 
 // 2do paso: crear las variables que necesitamos
 
-let score = 20
+let score
 let highscore = 0
 
 // obtener un número aleatorio entre 1 y 20
 const MIN_NUMBER = 1
 const MAX_NUMBER = 20
-const secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER
+let secretNumber
 
-console.log(`El número secreto es ${secretNumber}`)
+fnInitApp()
 
 // 3er paso: añadir un listener al checkButton y mostrar
 // un mensaje que diga si el número es mayor o menor  en el campo messageField
@@ -51,4 +51,19 @@ function fnCheckButton() {
     score--
     scoreField.textContent = score
   }
+}
+
+// 4to paso: añadir un listener al againButton y resetear el juego
+
+againButton.addEventListener('click', fnInitApp)
+
+function fnInitApp() {
+  score = 20
+  scoreField.textContent = score
+  guessField.value = ''
+  secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER
+  console.log(`El número secreto es ${secretNumber}`)
+  mostrarMensaje('Empieza a adivinar...')
+  bodyField.style.backgroundColor = '#222'
+  numberField.textContent = '?'
 }
