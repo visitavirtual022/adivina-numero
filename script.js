@@ -1,7 +1,7 @@
 // configurar la aplicación
 const mensajeInicial = 'Empieza a adivinar...'
-let score = 21
-let highScore = 1
+let score = 20
+let highScore = 0
 const secretNumber = Math.trunc(Math.random() * 20) + 1
 
 // seleccionar elementos del DOM
@@ -17,12 +17,12 @@ const guessNumberField = document.querySelector('.guess')
 messageField.textContent = mensajeInicial
 scoreField.textContent = score
 highScoreField.textContent = highScore
-secretNumberField.textContent = secretNumber
 
 // funcionalidad de la aplicación
 
 // addEventListener es una función que recibe
 // como argumento otra función
+
 checkButton.addEventListener('click', () => {
   // obtener el valor del input
   const guessNumber = Number(guessNumberField.value)
@@ -39,10 +39,18 @@ checkButton.addEventListener('click', () => {
     scoreField.textContent = score
     messageField.textContent = 'Te has quedado corto'
   } else {
-    // ha ganado...
     // cambiar fondo de pantalla
+    document.body.style.backgroundColor = 'green'
+    checkButton.disabled = true
+    // mostrar el mensaje
+    messageField.textContent = '¡Has acertado!'
     // mostrar el número secreto
+    secretNumberField.textContent = secretNumber
     // actualizar el highScore
+    if (score > highScore) {
+      highScore = score
+      highScoreField.textContent = highScore
+    }
   }
 
   // compararlo con el secretNumber
